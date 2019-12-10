@@ -12,7 +12,7 @@ location ~* ^/storage/.*\.(png|jpe?g)$ {
         break;
     }
 
-    try_files $uri.webp /plugins/damianlewis/webpconvert/webp-on-demand.php?source=$uri;
+    try_files $uri.webp /plugins/damianlewis/webpconverter/webp-on-demand.php?source=$uri;
 }
 ``` 
 Then reload the Nginx configuration.
@@ -34,7 +34,7 @@ Add the following header and rewrite rules to your Apache configuration:
 
     RewriteCond %{HTTP_ACCEPT} image/webp
     RewriteCond %{REQUEST_FILENAME} -f
-    RewriteRule ^(.*)\.(jpe?g|png)$ %{DOCUMENT_ROOT}/plugins/damianlewis/webpconvert/webp-on-demand.php?source=%{SCRIPT_FILENAME} [NC,L]
+    RewriteRule ^(.*)\.(jpe?g|png)$ %{DOCUMENT_ROOT}/plugins/damianlewis/webpconverter/webp-on-demand.php?source=%{SCRIPT_FILENAME} [NC,L]
 </IfModule>
 
 AddType image/webp .webp
